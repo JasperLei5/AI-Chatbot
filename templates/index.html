@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Interface</title>
+</head>
+<body>
+    <h1>Education Companion</h1>
+    <input type="text" id="userInput" />
+    <button onclick="getChatResponse()">Send</button>
+    <div id="chatWindow"></div>
+
+    <script>
+        function getChatResponse() {
+            var userText = document.getElementById('userInput').value;
+            fetch(`/get?msg=${userText}`).then(response => response.text()).then(data => {
+                var chatWindow = document.getElementById('chatWindow');
+                chatWindow.innerHTML += `<p>You: ${userText}</p>`;
+                chatWindow.innerHTML += `<p>Chatbot: ${data}</p>`;
+            });
+            document.getElementById('userInput').value = '';
+        }
+    </script>
+</body>
+</html>
