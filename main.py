@@ -3,7 +3,7 @@ import openai
 
 app = Flask(__name__)
 
-openai.api_key = "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"
+openai.api_key = "key"
 
 def chat_with_gpt(prompt):
     response = openai.ChatCompletion.create(
